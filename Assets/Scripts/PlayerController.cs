@@ -13,21 +13,38 @@ public class PlayerController : MonoBehaviour
     Vector3 movement;
 
     public Transform groundCheck;
-    public float jumpForce = 10;
+    public float jump;
     public float gravity = -20;
+    private bool onGround = true;
+
+    private const int MAX_JUMP = 2;
+    private int currentJump = 0;
 
     private Vector3 direction;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void Update()
     {
         movement.x = Input.GetAxisRaw("Horizontal");
+
+        if (Input.GetButtonDown("Jump") && (onGround || MAX_JUMP > currentJump))
+        {
+            rb.AddForce(Vector3.up * jump, ForceMode.Impulse);
+            onGround = false;
+            currentJump++;
+        }
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        onGround = true;
+        currentJump = 0;
     }
 
     void FixedUpdate()
@@ -35,7 +52,7 @@ public class PlayerController : MonoBehaviour
         rb.MovePosition(rb.position + movement * MoveSpeed * Time.deltaTime);
     }
 
-    public void Jump()
+    /*public void Jump()
     {
         bool isGrounded = Physics.CheckSphere(groundCheck.position, 0.3f, groundLayer);
         direction.y += gravity * Time.deltaTime;
@@ -44,5 +61,5 @@ public class PlayerController : MonoBehaviour
         {
             direction.y = jumpForce;
         }
-    }
+    }*/
 }

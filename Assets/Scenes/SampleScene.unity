@@ -228,7 +228,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   groundCheck: {fileID: 2106138993}
-  jumpForce: 10
+  jump: 7
   gravity: -20
 --- !u!54 &112538416
 Rigidbody:
@@ -366,7 +366,6 @@ GameObject:
   - component: {fileID: 950083079}
   - component: {fileID: 950083078}
   - component: {fileID: 950083083}
-  - component: {fileID: 950083082}
   m_Layer: 0
   m_Name: wall
   m_TagString: Untagged
@@ -453,22 +452,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &950083082
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 950083077}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!65 &950083083
 BoxCollider:
   m_ObjectHideFlags: 0
