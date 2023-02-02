@@ -6,29 +6,23 @@ public class Respawn : MonoBehaviour
 {
 
     public bool checkingin;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public Transform player;
+    public Transform RespawnPoint;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void OnTriggerStay(Collider collider)
     {
-        if (collider.gameObject.CompareTag("Player") == true)
+        if (collider.gameObject.CompareTag("Player"))
         {
             checkingin = true;
+
+            player.position = RespawnPoint.position;
         }
     }
 
     public void OnTriggerExit(Collider colliderr)
     {
-        if (colliderr.gameObject.CompareTag("Player") == false)
+        if (colliderr.gameObject.CompareTag("Player"))
         {
             checkingin = false;
         }
